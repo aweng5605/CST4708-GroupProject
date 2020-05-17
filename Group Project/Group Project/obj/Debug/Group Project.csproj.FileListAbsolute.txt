@@ -16,3 +16,4 @@ C:\Users\wenga\Desktop\Group Project\Group Project\obj\Debug\Group Project.pdb
 C:\Users\wenga\Desktop\Group Project\Group Project\obj\Debug\Group Project.csprojAssemblyReference.cache
 C:\Users\wenga\Desktop\Group Project\Group Project\obj\Debug\Group_Project.Cart.resources
 C:\Users\wenga\Desktop\Group Project\Group Project\obj\Debug\Group_Project.Profile.resources
+C:\Users\wenga\Desktop\Group Project\Group Project\obj\Debug\Group_Project.CheckOut.resources

@@ -60,7 +60,7 @@ namespace Group_Project
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Location = new System.Drawing.Point(12, 88);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(861, 363);
+            this.panel1.Size = new System.Drawing.Size(861, 372);
             this.panel1.TabIndex = 1;
             // 
             // dataGridView1
@@ -68,7 +68,6 @@ namespace Group_Project
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeColumns = false;
-            // TODO: Find alternative way to resize row height
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -118,7 +117,7 @@ namespace Group_Project
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.ShowEditingIcon = false;
             this.dataGridView1.ShowRowErrors = false;
-            this.dataGridView1.Size = new System.Drawing.Size(861, 363);
+            this.dataGridView1.Size = new System.Drawing.Size(861, 372);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsChanged);
@@ -237,7 +236,7 @@ namespace Group_Project
             this.btnAddToCart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddToCart.AutoSize = true;
             this.btnAddToCart.Font = new System.Drawing.Font("Lucida Sans", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddToCart.Location = new System.Drawing.Point(741, 457);
+            this.btnAddToCart.Location = new System.Drawing.Point(741, 466);
             this.btnAddToCart.Name = "btnAddToCart";
             this.btnAddToCart.Size = new System.Drawing.Size(132, 33);
             this.btnAddToCart.TabIndex = 6;
@@ -250,7 +249,7 @@ namespace Group_Project
             this.btnBackToLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnBackToLogin.AutoSize = true;
             this.btnBackToLogin.Font = new System.Drawing.Font("Lucida Sans", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBackToLogin.Location = new System.Drawing.Point(12, 457);
+            this.btnBackToLogin.Location = new System.Drawing.Point(12, 466);
             this.btnBackToLogin.Name = "btnBackToLogin";
             this.btnBackToLogin.Size = new System.Drawing.Size(132, 33);
             this.btnBackToLogin.TabIndex = 7;
@@ -264,7 +263,7 @@ namespace Group_Project
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.BackgroundImage = global::Group_Project.Properties.Resources.BackgroundReduced;
-            this.ClientSize = new System.Drawing.Size(885, 502);
+            this.ClientSize = new System.Drawing.Size(885, 511);
             this.Controls.Add(this.btnBackToLogin);
             this.Controls.Add(this.btnAddToCart);
             this.Controls.Add(this.lbCart);

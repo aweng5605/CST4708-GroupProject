@@ -65,9 +65,16 @@ namespace Group_Project
             profile.Show();
             Console.WriteLine("Showing Profile");
         }
-        public static void ShowCart()
+
+        public static void ShowCheckOut(String username)
         {
-            Cart cart = new Cart();
+            CheckOut checkOut = new CheckOut(username);
+            checkOut.Show();
+            Console.WriteLine("Showing CheckOut");
+        }
+        public static void ShowCart(String username)
+        {
+            Cart cart = new Cart(username);
             cart.Show();
             Console.WriteLine("Showing Cart");
         }

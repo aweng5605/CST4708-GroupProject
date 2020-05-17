@@ -11,6 +11,7 @@ namespace Group_Project
 {
     public partial class Cart : Form
     {
+        private DataTable users = new DataTable();
         private DataTable allComics;
         public double[] price;
         public double[] total;
@@ -19,8 +20,13 @@ namespace Group_Project
         public static String FirstName;
         public static String LastName;
 
-        public Cart()
+        public Cart(String username)
         {
+            userName = username;
+            Database db = new Database();
+            DataTable dt = db.profile(userName);
+            FirstName = dt.Rows[0]["FirstName"].ToString();
+            LastName = dt.Rows[0]["LastName"].ToString();
             InitializeComponent();
             populateCart();
         }
@@ -101,10 +107,8 @@ namespace Group_Project
             }
 
             lbUserName.Text = FirstName + " " + LastName;
-            lbCreditCard.Text = "Credit Card: " + Profile.CreditCard;
             lbTax.Text = "Tax: $" + sumTax;
             lbTotalAmt.Text = "Total: $" + sumTotal;
-
         }
 
         private void lbUsername_Click(object sender, EventArgs e)
@@ -117,7 +121,8 @@ namespace Group_Project
             Database db = new Database();
             db.clearCart(Catalog.userID);
             populateCart();
-            this.Close();
+            Global.ShowCheckOut(userName);
+            this.Hide();
         }
 
         private void btnClearCart_Click(object sender, EventArgs e)
@@ -127,5 +132,10 @@ namespace Group_Project
             populateCart();
         }
 
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Global.ShowCatalog(userName);
+            this.Close();
+        }
     }
 }

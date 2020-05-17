@@ -58,6 +58,9 @@ namespace Group_Project
                     Cart.FirstName = row["FirstName"].ToString();
                     Cart.LastName = row["LastName"].ToString();
                     Cart.userName = row["Username"].ToString();
+                    CheckOut.FirstName = row["FirstName"].ToString();
+                    CheckOut.LastName = row["LastName"].ToString();
+                    CheckOut.CreditCard = row["CreditCard"].ToString();
                     //Profile.id = int.Parse(row["id"].ToString());
                 }
                 return true;
@@ -105,7 +108,6 @@ namespace Group_Project
             connection.Close();
             return dt;
         }
-
 
         public void addToCart(int userID, int comicID)
         {

@@ -11,8 +11,6 @@ namespace Group_Project
 {
     public partial class Profile : Form
     {
-
-        private DataTable dt = new DataTable();
         public static String userName;
         public static String userID;
         public static String FirstName;
@@ -26,7 +24,6 @@ namespace Group_Project
 
             Database db = new Database();
             DataTable dt = db.profile(userName);
-
 
             userID = dt.Rows[0]["Id"].ToString();
             FirstName = dt.Rows[0]["FirstName"].ToString();

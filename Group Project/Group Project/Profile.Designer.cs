@@ -36,6 +36,7 @@ namespace Group_Project
             this.lbID = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -45,7 +46,7 @@ namespace Group_Project
             this.lbFirstName.AutoSize = true;
             this.lbFirstName.BackColor = System.Drawing.Color.Transparent;
             this.lbFirstName.Font = new System.Drawing.Font("Constantia", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbFirstName.Location = new System.Drawing.Point(43, 44);
+            this.lbFirstName.Location = new System.Drawing.Point(31, 44);
             this.lbFirstName.Name = "lbFirstName";
             this.lbFirstName.Size = new System.Drawing.Size(143, 29);
             this.lbFirstName.TabIndex = 8;
@@ -57,7 +58,7 @@ namespace Group_Project
             this.lbLastName.AutoSize = true;
             this.lbLastName.BackColor = System.Drawing.Color.Transparent;
             this.lbLastName.Font = new System.Drawing.Font("Constantia", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLastName.Location = new System.Drawing.Point(48, 73);
+            this.lbLastName.Location = new System.Drawing.Point(36, 73);
             this.lbLastName.Name = "lbLastName";
             this.lbLastName.Size = new System.Drawing.Size(138, 29);
             this.lbLastName.TabIndex = 9;
@@ -68,7 +69,7 @@ namespace Group_Project
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.Menu;
             this.pictureBox1.Image = global::Group_Project.Properties.Resources.user;
-            this.pictureBox1.Location = new System.Drawing.Point(90, 20);
+            this.pictureBox1.Location = new System.Drawing.Point(90, 70);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(232, 236);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -110,10 +111,22 @@ namespace Group_Project
             this.panel1.Controls.Add(this.lbLastName);
             this.panel1.Controls.Add(this.lbFirstName);
             this.panel1.Controls.Add(this.lbID);
-            this.panel1.Location = new System.Drawing.Point(36, 279);
+            this.panel1.Location = new System.Drawing.Point(36, 329);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(330, 122);
+            this.panel1.Size = new System.Drawing.Size(330, 110);
             this.panel1.TabIndex = 13;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Constantia", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(111, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(198, 39);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "User Profile";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Profile
             // 
@@ -122,6 +135,7 @@ namespace Group_Project
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.BackgroundImage = global::Group_Project.Properties.Resources.BackgroundReduced;
             this.ClientSize = new System.Drawing.Size(412, 455);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.pictureBox1);
@@ -144,5 +158,6 @@ namespace Group_Project
         private System.Windows.Forms.Label lbID;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
     }
 }

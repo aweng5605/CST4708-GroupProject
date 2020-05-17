@@ -35,10 +35,8 @@ namespace Group_Project
             InitializeComponent();
             userName = username;
             loadUser(username);
-
             dataGridView1.DataSource = dt;
             dataGridView1.AutoGenerateColumns = false;
-
             loadData();
         }
 
@@ -160,10 +158,8 @@ namespace Group_Project
 
         private void lbCart_Click(object sender, EventArgs e)
         {
-            var cart = new Cart();
-            cart.ShowDialog();
-            //Global.ShowCart();
-            //this.Hide();
+            Global.ShowCart(userName);
+            this.Hide();
         }
 
         private void SearchTextClear()
