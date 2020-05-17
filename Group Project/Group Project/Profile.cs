@@ -23,7 +23,7 @@ namespace Group_Project
             InitializeComponent();
 
             Database db = new Database();
-            DataTable dt = db.profile(userName);
+            DataTable dt = db.Profile(userName);
 
             userID = dt.Rows[0]["Id"].ToString();
             FirstName = dt.Rows[0]["FirstName"].ToString();

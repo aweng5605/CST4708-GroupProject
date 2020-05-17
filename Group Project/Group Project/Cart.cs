@@ -19,14 +19,16 @@ namespace Group_Project
         public static String userName;
         public static String FirstName;
         public static String LastName;
+        public static int userID;
 
         public Cart(String username)
         {
             userName = username;
             Database db = new Database();
-            DataTable dt = db.profile(userName);
+            DataTable dt = db.Profile(userName);
             FirstName = dt.Rows[0]["FirstName"].ToString();
             LastName = dt.Rows[0]["LastName"].ToString();
+            userID = int.Parse(dt.Rows[0]["Id"].ToString());
             InitializeComponent();
             populateCart();
         }
@@ -36,7 +38,7 @@ namespace Group_Project
 
             allComics = new DataTable();
             Database db = new Database();
-            allComics = db.populateCart(Catalog.userID);
+            allComics = db.PopulateCart(Catalog.userID);
 
             Panel[] panelArray = new Panel[allComics.Rows.Count];
             Label[] labelArray = new Label[allComics.Rows.Count];
@@ -109,6 +111,9 @@ namespace Group_Project
             lbUserName.Text = FirstName + " " + LastName;
             lbTax.Text = "Tax: $" + sumTax;
             lbTotalAmt.Text = "Total: $" + sumTotal;
+
+            Database db = new Database();
+            db.UpdateTotal(userID,sumTotal);
         }
 
         private void lbUsername_Click(object sender, EventArgs e)
@@ -118,9 +123,6 @@ namespace Group_Project
 
         private void btnCheckout_Click(object sender, EventArgs e)
         {
-            Database db = new Database();
-            db.clearCart(Catalog.userID);
-            populateCart();
             Global.ShowCheckOut(userName);
             this.Hide();
         }
@@ -128,14 +130,14 @@ namespace Group_Project
         private void btnClearCart_Click(object sender, EventArgs e)
         {
             Database db = new Database();
-            db.clearCart(Catalog.userID);
+            db.ClearCart(Catalog.userID);
             populateCart();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
             Global.ShowCatalog(userName);
-            this.Close();
+            this.Hide();
         }
     }
 }

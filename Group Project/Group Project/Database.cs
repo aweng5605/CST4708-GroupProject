@@ -10,33 +10,33 @@ namespace Group_Project
 {
     public class Database
     {
-        SqlConnection connection;
-        SqlDataAdapter adapter;
+        readonly SqlConnection connection;
+        readonly SqlDataAdapter adapter;
 
         public Database()
         {
             String connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"" + System.IO.Directory.GetCurrentDirectory() + "\\Comics.mdf\";Integrated Security=True;Connect Timeout=30";
-            connection = new SqlConnection();
-            connection.ConnectionString = connectionString;
+            connection = new SqlConnection
+            {
+                ConnectionString = connectionString
+            };
             adapter = new SqlDataAdapter();
         }
 
-        public bool login(String user, String pass)
+        public bool Login(String user, String pass)
         {
-            SqlCommand select = new SqlCommand();
-            select.CommandText = "Select * From Customer Where Username = @user AND Password = @pass;";
+            SqlCommand select = new SqlCommand
+            {
+                CommandText = "Select * From Customer Where Username = @user AND Password = @pass;"
+            };
             select.Parameters.Add("@user", SqlDbType.VarChar);
             select.Parameters["@user"].Value = user;
-
             select.Parameters.Add("@pass", SqlDbType.VarChar);
             select.Parameters["@pass"].Value = pass;
-
             select.Connection = connection;
-
             DataTable dt = new DataTable();
             connection.Open();
             adapter.SelectCommand = select;
-
             adapter.Fill(dt);
             connection.Close();
 
@@ -48,9 +48,9 @@ namespace Group_Project
             {
                 foreach (DataRow row in dt.Rows)
                 {
-                    Profile.FirstName = row["FirstName"].ToString();
-                    Profile.LastName = row["LastName"].ToString();
-                    Profile.CreditCard = row["CreditCard"].ToString();
+                    Group_Project.Profile.FirstName = row["FirstName"].ToString();
+                    Group_Project.Profile.LastName = row["LastName"].ToString();
+                    Group_Project.Profile.CreditCard = row["CreditCard"].ToString();
                     Catalog.FirstName = row["FirstName"].ToString();
                     Catalog.LastName = row["LastName"].ToString();
                     Catalog.userName = row["Username"].ToString();
@@ -68,12 +68,14 @@ namespace Group_Project
 
         }
 
-        public DataTable populateComics()
+        public DataTable PopulateComics()
         {
 
-            SqlCommand select = new SqlCommand();
-            select.CommandText = "select * from Comic_info";
-            select.Connection = connection;
+            SqlCommand select = new SqlCommand
+            {
+                CommandText = "select * from Comic_info",
+                Connection = connection
+            };
             DataTable dt = new DataTable();
             connection.Open();
             adapter.SelectCommand = select;
@@ -82,12 +84,14 @@ namespace Group_Project
             return dt;
         }
 
-        public DataTable populateComics(String input)
+        public DataTable PopulateComics(String input)
         {
 
-            SqlCommand select = new SqlCommand();
-            select.CommandText = "select * from Comic_info where Title = '" + input + "';";
-            select.Connection = connection;
+            SqlCommand select = new SqlCommand
+            {
+                CommandText = "select * from Comic_info where Title = '" + input + "';",
+                Connection = connection
+            };
             DataTable dt = new DataTable();
             connection.Open();
             adapter.SelectCommand = select;
@@ -96,11 +100,13 @@ namespace Group_Project
             return dt;
         }
 
-        public DataTable profile(String user)
+        public DataTable Profile(String user)
         {
-            SqlCommand select = new SqlCommand();
-            select.CommandText = "select * from Customer where Username = '" + user + "';";
-            select.Connection = connection;
+            SqlCommand select = new SqlCommand
+            {
+                CommandText = "select * from Customer where Username = '" + user + "';",
+                Connection = connection
+            };
             DataTable dt = new DataTable();
             connection.Open();
             adapter.SelectCommand = select;
@@ -109,21 +115,13 @@ namespace Group_Project
             return dt;
         }
 
-        public void addToCart(int userID, int comicID)
+        public DataTable FindComic(String title)
         {
-            SqlCommand insert = new SqlCommand();
-            insert.CommandText = "INSERT INTO cart (UserID, ComicID) VALUES (" + userID + ",  " + comicID + ");";
-            insert.Connection = connection;
-            connection.Open();
-            connection.Close();
-        }
-
-
-        public DataTable populateCart(int userID)
-        {
-            SqlCommand select = new SqlCommand();
-            select.CommandText = "select Comic_Info.Id, Comic_Info.Title, Comic_Info.Price, Comic_Info.Link from  Comic_Info INNER JOIN Cart ON  Comic_Info.Id =  Cart.ComicID where Cart.UserID = " + userID + ";";
-            select.Connection = connection;
+            SqlCommand select = new SqlCommand
+            {
+                CommandText = "select * from Comic_Info where Title = '" + title + "';",
+                Connection = connection
+            };
             DataTable dt = new DataTable();
             connection.Open();
             adapter.SelectCommand = select;
@@ -132,23 +130,67 @@ namespace Group_Project
             return dt;
         }
 
-        public void clearCart(int userID)
+        public void AddToCart(int userID, int comicID)
         {
-            SqlCommand delete = new SqlCommand();
-            delete.CommandText = "Delete FROM Cart where UserID = " + userID;
-            delete.Connection = connection;
+            SqlCommand insert = new SqlCommand
+            {
+                CommandText = "INSERT INTO Cart (UserID, ComicID) VALUES (" + userID + ",  " + comicID + ");",
+                Connection = connection
+            };
+            connection.Open();
+            insert.ExecuteNonQuery();
+            connection.Close();
+        }
+
+
+        public DataTable PopulateCart(int userID)
+        {
+            SqlCommand select = new SqlCommand
+            {
+                CommandText = "select Comic_Info.Id, Comic_Info.Title, Comic_Info.Price, Comic_Info.Link from  Comic_Info INNER JOIN Cart ON  Comic_Info.Id =  Cart.ComicID where Cart.UserID = " + userID + ";",
+                Connection = connection
+            };
+            DataTable dt = new DataTable();
+            connection.Open();
+            adapter.SelectCommand = select;
+            adapter.Fill(dt);
+            connection.Close();
+            return dt;
+        }
+
+        public void ClearCart(int userID)
+        {
+            SqlCommand delete = new SqlCommand
+            {
+                CommandText = "Delete FROM Cart where UserID = " + userID,
+                Connection = connection
+            };
             connection.Open();
             delete.ExecuteNonQuery();
             connection.Close();
         }
 
-        public void register(String username, String password, String fname, String lname, String cc)
+        public void Register(String username, String password, String fname, String lname, String cc)
         {
-            SqlCommand insert = new SqlCommand();
-            insert.CommandText = "INSERT INTO users (Username, Password, FirstName, LastName, CreditCard ) VALUES ('" + username + "',  '" + password + "',  '" + fname + "',  '" + lname + "', '" + cc + "');";
-            insert.Connection = connection;
+            SqlCommand insert = new SqlCommand
+            {
+                CommandText = "INSERT INTO Customer (Username, Password, FirstName, LastName, CreditCard ) VALUES ('" + username + "',  '" + password + "',  '" + fname + "',  '" + lname + "', '" + cc + "');",
+                Connection = connection
+            };
             connection.Open();
             insert.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        public void UpdateTotal(int userID, Double amount)
+        {
+            SqlCommand updateAmt = new SqlCommand
+            {
+                CommandText = "Update Customer Set Checkout_Total='" + amount + "' Where Id=" + userID + ";",
+                Connection = connection
+            };
+            connection.Open();
+            updateAmt.ExecuteNonQuery();
             connection.Close();
         }
 

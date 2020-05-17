@@ -19,6 +19,7 @@ namespace Group_Project
         public static String FirstName;
         public static String LastName;
         public static int userID;
+        public static int comicID;
 
         public Catalog()
         {
@@ -128,8 +129,8 @@ namespace Group_Project
 
         private void LoadImages(DataGridViewCellFormattingEventArgs e)
         {
-            // Column 4 is image column in datagridview1
-            if (e.ColumnIndex == 4)
+            // Column 0 is image column in datagridview1
+            if (e.ColumnIndex == 0)
             {
                 DataTable dt = dataGridView1.DataSource as DataTable;
                 if (dt != null && dt.Rows.Count > e.RowIndex && dt.Columns.Count > e.ColumnIndex)
@@ -206,7 +207,15 @@ namespace Group_Project
         private void btnAddToCart_Click(object sender, EventArgs e)
         {
             Database db = new Database();
-            db.addToCart(userID, 2205);
+            if (userID == 0 || comicID == 0)
+            {
+                MessageBox.Show("This operation cannot be done.");
+            }
+            else
+            {
+                db.AddToCart(userID, comicID);
+            }
+            
         }
 
         private void btnBackToLogin_Click(object sender, EventArgs e)
@@ -218,6 +227,18 @@ namespace Group_Project
         private void Catalog_FormClosing(object sender, FormClosingEventArgs e)
         {
             // TODO: Handle opening profile/login when this closes.
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                String comicTitle = row.Cells["Column2"].Value.ToString();
+                Database db = new Database();
+                DataTable dt = db.FindComic(comicTitle);
+                comicID = int.Parse(dt.Rows[0]["Id"].ToString());
+            }
+           
         }
     }
 }

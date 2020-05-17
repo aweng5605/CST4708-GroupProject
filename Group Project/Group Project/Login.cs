@@ -60,7 +60,7 @@ namespace Group_Project
 
         private void LoginCheck()
         {
-            if (data.login(TBusername.Text, TBpassword.Text))
+            if (data.Login(TBusername.Text, TBpassword.Text))
             {
                 loadCatalog();
             }
