@@ -43,7 +43,7 @@ namespace Group_Project
             Panel[] panelArray = new Panel[allComics.Rows.Count];
             Label[] labelArray = new Label[allComics.Rows.Count];
             Label[] priceArray = new Label[allComics.Rows.Count];
-            //PictureBox[] picBoxArray = new PictureBox[allComics.Rows.Count];
+            PictureBox[] picBoxArray = new PictureBox[allComics.Rows.Count];
 
             CartPanel.Controls.Clear();
 
@@ -56,31 +56,31 @@ namespace Group_Project
 
                 labelArray[i] = new Label();
                 labelArray[i].Text = allComics.Rows[i]["Title"].ToString();
-                labelArray[i].Font = new Font("Times New Roman", 12.0f);
-                labelArray[i].Location = new Point(200, 40);
+                labelArray[i].Font = new Font("Constantia", 20.0f, FontStyle.Bold);
+                labelArray[i].Location = new Point(250, 40);
                 labelArray[i].Size = new Size(300, 50);
 
                 priceArray[i] = new Label();
                 priceArray[i].Text = "$" + allComics.Rows[i]["Price"].ToString();
-
-                priceArray[i].Font = new Font("Times New Roman", 12.0f);
-                priceArray[i].Location = new Point(500, 40);
+                priceArray[i].Font = new Font("Constantia", 18.0f, FontStyle.Bold);
+                priceArray[i].Location = new Point(650, 40);
                 priceArray[i].Size = new Size(200, 50);
-
                 priceArray[i].Name = allComics.Rows[i]["Id"].ToString();
 
-                /*
+                WebClient wc = new WebClient();
                 picBoxArray[i] = new PictureBox();
-                String temp = allComics.Rows[i]["Link"].ToString();
-                picBoxArray[i].Image = (Image)Properties.Resources.ResourceManager.GetObject(temp);
+                String link = allComics.Rows[i]["Link"].ToString();
+                byte[] bytes = wc.DownloadData(link);
+                MemoryStream ms = new MemoryStream(bytes);
+                Image fullsizeImage = Image.FromStream(ms);
+                picBoxArray[i].Image = fullsizeImage.GetThumbnailImage(400, 400, null, IntPtr.Zero);
                 picBoxArray[i].Location = new Point(0, 0);
-                picBoxArray[i].Size = new Size(200, 100);
-                picBoxArray[i].SizeMode = PictureBoxSizeMode.Zoom;
-                */
+                picBoxArray[i].Size = new Size(200, 200);
+                picBoxArray[i].SizeMode = PictureBoxSizeMode.StretchImage;
 
                 panelArray[i].Controls.Add(labelArray[i]);
                 panelArray[i].Controls.Add(priceArray[i]);
-                //panelArray[i].Controls.Add(picBoxArray[i]);
+                panelArray[i].Controls.Add(picBoxArray[i]);
 
                 CartPanel.Controls.Add(panelArray[i]);
             }
@@ -109,8 +109,8 @@ namespace Group_Project
             }
 
             lbUserName.Text = FirstName + " " + LastName;
-            lbTax.Text = "Tax: $" + sumTax;
-            lbTotalAmt.Text = "Total: $" + sumTotal;
+            lbTax.Text = "Tax: $" + String.Format("{0:0.00}", sumTax);
+            lbTotalAmt.Text = "Total: $" + String.Format("{0:0.00}", sumTotal);
 
             Database db = new Database();
             db.UpdateTotal(userID,sumTotal);

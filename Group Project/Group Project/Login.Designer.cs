@@ -72,7 +72,7 @@
             // 
             this.BTNregister.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BTNregister.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.BTNregister.Font = new System.Drawing.Font("Lucida Sans", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNregister.Font = new System.Drawing.Font("Constantia", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNregister.Location = new System.Drawing.Point(7, 81);
             this.BTNregister.Name = "BTNregister";
             this.BTNregister.Size = new System.Drawing.Size(113, 35);
@@ -129,10 +129,10 @@
             // 
             this.BTNlogin.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BTNlogin.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.BTNlogin.Font = new System.Drawing.Font("Lucida Sans", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTNlogin.Location = new System.Drawing.Point(186, 81);
+            this.BTNlogin.Font = new System.Drawing.Font("Constantia", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNlogin.Location = new System.Drawing.Point(156, 81);
             this.BTNlogin.Name = "BTNlogin";
-            this.BTNlogin.Size = new System.Drawing.Size(90, 35);
+            this.BTNlogin.Size = new System.Drawing.Size(149, 35);
             this.BTNlogin.TabIndex = 4;
             this.BTNlogin.Text = "Login";
             this.BTNlogin.UseVisualStyleBackColor = false;
@@ -210,7 +210,7 @@
             // btnShortcut
             // 
             this.btnShortcut.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnShortcut.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btnShortcut.Font = new System.Drawing.Font("Constantia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShortcut.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnShortcut.Location = new System.Drawing.Point(353, 366);
             this.btnShortcut.Name = "btnShortcut";

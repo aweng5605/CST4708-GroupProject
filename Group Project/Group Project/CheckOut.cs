@@ -37,7 +37,7 @@ namespace Group_Project
             tbFirstName.Text = FirstName;
             tbLastName.Text = LastName;
             tbCreditCard.Text = CreditCard;
-            lbPurchaseTotal.Text = "Purchase Total: $" + Total;
+            lbPurchaseTotal.Text = "Purchase Total: $" + String.Format("{0:0.00}", Total);
 
         }
 
